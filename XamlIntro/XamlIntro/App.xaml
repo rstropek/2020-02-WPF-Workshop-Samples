@@ -1,0 +1,23 @@
+﻿<Application x:Class="XamlIntro.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:XamlIntro"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <DataTemplate x:Key="WithImage">
+            <StackPanel Orientation="Horizontal">
+                <Image Width="50" Source="https://robohash.org/Thomas" />
+                <StackPanel VerticalAlignment="Center" Margin="20,0,0,0">
+                    <TextBlock Text="{Binding LastName}" FontSize="20" />
+                    <TextBlock Text="{Binding FirstName}" />
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="WithoutImage">
+            <StackPanel VerticalAlignment="Center" Margin="20,0,0,0">
+                <TextBlock Text="{Binding LastName}" FontSize="20" />
+                <TextBlock Text="{Binding FirstName}" />
+            </StackPanel>
+        </DataTemplate>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="XamlIntro.PlanCanvas"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:XamlIntro"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <local:ComponentToThicknessConverter x:Key="ComponentToThicknessConverter" />
+        <DataTemplate DataType="{x:Type local:Component}">
+            <Rectangle Fill="Red" Opacity="0.5" Stroke="Black" Width="{Binding Length}"
+                       Height="{Binding Height}"
+                       Margin="{Binding Converter={StaticResource ComponentToThicknessConverter}}"
+                       HorizontalAlignment="Left"
+                       MouseDown="Rectangle_MouseDown">
+
+            </Rectangle>
+        </DataTemplate>
+    </UserControl.Resources>
+    <StackPanel>
+        <Slider Minimum="0" Maximum="200" Value="{Binding Components[0].Height}" />
+        <ItemsControl ItemsSource="{Binding Components}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>
